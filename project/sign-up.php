@@ -35,7 +35,7 @@
 
         if(empty($password)){
             $errPassword = "Please write your password";
-        }elseif(!preg_match("/^[A-Za-z0-9@#$%^&+=]{8,}$/", $password)){
+        }elseif(!preg_match('/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/', $password)){
             $errPassword = "Password must be at least 8 characters";
         }else{
             $crrPassword = $password;

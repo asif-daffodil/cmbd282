@@ -31,7 +31,8 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="./my-profile.php">My Profile</a></li>
-                        <li><a class="dropdown-item" href="#">Change Password</a></li>
+                        <li><a class="dropdown-item" href="./change-password.php">Change Password</a></li>
+                        <li><a class="dropdown-item" href="./change-profile-picture.php">Change Profile Picture</a></li>
                         <li><a class="dropdown-item" href="#">Admin Panel</a></li>
                         <li>
                             <hr class="dropdown-divider">

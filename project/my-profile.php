@@ -46,6 +46,16 @@ if (isset($_POST['updateProfile'])) {
     } else {
         $crrAddress = $conn->real_escape_string($address);
     }
+
+    if(isset($crrName) && isset($crrEmail) && isset($crrGender) && isset($crrAddress)){
+        $sql = "UPDATE `users` SET `name`='$crrName',`email`='$crrEmail',`gender`='$crrGender',`address`='$crrAddress' WHERE `id` = $userId";
+        if ($conn->query($sql)) {
+            $_SESSION['iUserInfo'] = $conn->query("SELECT * FROM `users` WHERE `id` = $userId")->fetch_object();
+            echo "<script>toastr.success('Profile updated successfully');</script>";
+        } else {
+            echo "<script>toastr.error('Failed to update profile');</script>";
+        }
+    }
 }
 ?>
 <div class="container">
@@ -57,7 +67,7 @@ if (isset($_POST['updateProfile'])) {
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" class="form-control <?= isset($errName) ? "is-invalid" : null ?>" name="name"
-                        value="<?= $userInfo->name ?? null ?>">
+                        value="<?= $name ?? $userInfo->name ?? null ?>">
                     <div class="invalid-feedback">
                         <?= isset($errName) ? $errName : null ?>
                     </div>
@@ -67,7 +77,7 @@ if (isset($_POST['updateProfile'])) {
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control <?= isset($errEmail) ? "is-invalid" : null ?>" name="email"
                         value="<?=
-                            $userInfo->email ?? null ?>">
+                            $email ?? $userInfo->email ?? null ?>">
                     <div class="invalid-feedback">
                         <?= isset($errEmail) ? $errEmail : null ?>
                     </div>
@@ -81,12 +91,12 @@ if (isset($_POST['updateProfile'])) {
                             disabled>
                         <div class="form-check form-check-inline">
                             <input type="radio" class="form-check-input" id="male" value="Male" name="gender"
-                                <?= $userInfo->gender === "Male" ? "checked" : null ?>>
+                                <?= $userInfo->gender === "Male" ? "checked" : (isset($gender) && $gender === "Male" ? "checked" : null) ?>>
                             <label for="male" class="form-label">Male</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input type="radio" class="form-check-input" id="female" value="Female" name="gender"
-                                <?= $userInfo->gender === "Female" ? "checked" : null ?>>
+                                <?= $userInfo->gender === "Female" ? "checked" : (isset($gender) && $gender === "Female" ? "checked" : null) ?>>
                             <label for="female" class="form-label">Female</label>
                         </div>
                         <div class="form-check form-check-inline">
@@ -102,13 +112,20 @@ if (isset($_POST['updateProfile'])) {
                 <!-- address section -->
                 <div class="mb-3">
                     <label for="address" class="form-label">Address</label>
-                    <!-- <input type="text" class="form-control" name="address"> -->
+                    <!-- Hidden textarea to store the Quill content -->
                     <textarea class="form-control <?= isset($errAddress) ? "is-invalid" : null ?>" name="address"
-                        rows="3" style="resize: none" id="editor"><?= $userInfo->address ?? null ?></textarea>
+                        rows="3" style="display: none;" id="hiddenAddress">
+        <?= htmlspecialchars_decode($address ?? $userInfo->address ?? '') ?>
+    </textarea>
+                    <!-- Quill editor container -->
+                    <div id="editor" class="<?= isset($errAddress) ? "border border-danger":null ?>">
+                        <?= htmlspecialchars_decode($address ?? $userInfo->address ?? '') ?>
+                    </div>
                     <div class="invalid-feedback">
                         <?= isset($errAddress) ? $errAddress : null ?>
                     </div>
                 </div>
+
                 <!-- submit button -->
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary" name="updateProfile">Update</button>
@@ -121,7 +138,11 @@ if (isset($_POST['updateProfile'])) {
 
 <script>
     const quill = new Quill('#editor', {
-        theme: 'snow'
+        theme: 'snow',
+    });
+    $('#editor').on('keyup', function () {
+        const html = quill.root.innerHTML;
+        $('#hiddenAddress').val(html);
     });
 </script>
 
