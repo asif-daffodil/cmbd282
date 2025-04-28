@@ -13,27 +13,33 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Shop</a>
                 </li>
+                <?php if(!isset($_SESSION['iUserInfo'])){ ?>
                 <li class="nav-item">
                     <a class="nav-link <?= $pageName == "sign-in.php" ? "active":null ?>" href="./sign-in.php">Sign In</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?= $pageName == "sign-up.php" ? "active":null ?>" href="./sign-up.php">Sign Up</a>
                 </li>
+                <?php }else{ ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        User Name
+                        <?php 
+                            $fullNameArr = explode(" ", $_SESSION['iUserInfo']->name); 
+                            echo $fullNameArr[0];
+                        ?>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">My Profile</a></li>
+                        <li><a class="dropdown-item" href="./my-profile.php">My Profile</a></li>
                         <li><a class="dropdown-item" href="#">Change Password</a></li>
                         <li><a class="dropdown-item" href="#">Admin Panel</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Log out</a></li>
+                        <li><a class="dropdown-item" href="./logout.php">Log out</a></li>
                     </ul>
                 </li>
+                <?php } ?>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
                 </li>

@@ -122,6 +122,20 @@
 <!-- Footer -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+<!-- 
+<script>
+  // stop the right click
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+  }, false);
+  // stop the F12 and ctrl+shift+i
+  document.addEventListener('keydown', function (e) {
+    if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 73)) {
+      e.preventDefault();
+    }
+  }, false);
+</script> 
+-->
 </body>
 
 </html>

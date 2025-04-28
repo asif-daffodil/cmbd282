@@ -20,3 +20,7 @@
 .text-primary {
     color: #273c75 !important;
 }
+
+.toastr{
+    transform: translateY(-200%);
+  }
