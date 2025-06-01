@@ -40,12 +40,11 @@
                             <li><i class="menu-icon ti-themify-logo"></i><a href="./addNewProduct.php" style="font-weight: <?= $pageName == "addNewProduct.php" ? "bold":"regular" ?>">Add New Products</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children dropdown">
+                    <li class="menu-item-has-children dropdown <?= $pageName == "pending-orders.php" || $pageName == "completed-orders.php" ? "show":null ?>">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bar-chart"></i>Orders</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-line-chart"></i><a href="charts-chartjs.html">New Orders</a></li>
-                            <li><i class="menu-icon fa fa-area-chart"></i><a href="charts-flot.html">Pending Orders</a></li>
-                            <li><i class="menu-icon fa fa-pie-chart"></i><a href="charts-peity.html">Completed Orders</a></li>
+                        <ul class="sub-menu children dropdown-menu <?= $pageName == "pending-orders.php" || $pageName == "completed-orders.php" ? "show":null ?>">
+                            <li><i class="menu-icon fa fa-area-chart"></i><a href="./pending-orders.php" style="font-weight: <?= $pageName == "pending-orders.php" ? "bold":"regular" ?>">Pending Orders</a></li>
+                            <li><i class="menu-icon fa fa-pie-chart"></i><a href="./all-orders.php" style="font-weight: <?= $pageName == "all-orders.php" ? "bold":"regular" ?>">All Orders</a></li>
                         </ul>
                     </li>
                 </ul>

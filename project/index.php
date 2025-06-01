@@ -1,4 +1,5 @@
 <?php  
+    $title = "Home | Imran Shop";
     require_once './components/header.php';
 ?>
 <div class="container">
@@ -41,7 +42,7 @@
                         <img src="./assets/images/products/<?= $product->image ?>" alt="<?= $product->name ?>" class="card-img-top img-thumbnail p-2" style="height: 100%; height: 200px; object-fit: contain;">
                         <div class="card-body">
                             <h5 class="card-title text-truncate" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><?= $product->name ?></h5>
-                            <p class="card-text">Price: $<?= $product->sale_price ?></p>
+                            <p class="card-text">Price: $<?= number_format($product->sale_price) ?></p>
                             <a href="./single-product.php?id=<?= $product->id ?>" class="btn btn-primary">View Details</a>
                         </div>
                     </div>
@@ -67,7 +68,7 @@
                         <img src="./assets/images/products/<?= $product->image ?>" alt="<?= $product->name ?>" class="card-img-top img-thumbnail p-2" style="height: 100%; height: 200px; object-fit: contain;">
                         <div class="card-body">
                             <h5 class="card-title text-truncate" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><?= $product->name ?></h5>
-                            <p class="card-text">Price: $<?= $product->sale_price ?></p>
+                            <p class="card-text">Price: $<?= number_format($product->sale_price) ?></p>
                             <a href="./single-product.php?id=<?= $product->id ?>" class="btn btn-primary">View Details</a>
                         </div>
                     </div>

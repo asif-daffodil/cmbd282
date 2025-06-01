@@ -18,6 +18,7 @@
         $uploadFile = $uploadDir . basename($imageName);
         $uploadFileName = uniqid('', true) . '.' . $imageType;
         $uploadFilePath = $uploadDir . $uploadFileName;
+        $description = isset($_POST['description']) ? sanitize($_POST['description']) : '';
 
         // validation
         if (empty($name)) {
@@ -56,7 +57,7 @@
             $crrImage = $conn->real_escape_string($uploadFileName);
             if (move_uploaded_file($imageTmpName, $uploadFilePath)) {
                 // Insert product into database
-                $sql = "INSERT INTO `products` (`name`, `regular_price`, `sale_price`, `category_id`, `image`) VALUES ('$crrName', '$crrRegular_price', '$crrSale_price', '$crrCategory_id', '$crrImage')";
+                $sql = "INSERT INTO `products` (`name`, `regular_price`, `sale_price`, `category_id`, `image`, `description`) VALUES ('$crrName', '$crrRegular_price', '$crrSale_price', '$crrCategory_id', '$crrImage', '$description')";
                 if ($conn->query($sql) === TRUE) {
                     echo "<script>toastr.success('Product added successfully');setTimeout(()=> location.href='./addNewProduct.php', 2000)</script>";
                 } else {
@@ -128,6 +129,14 @@
                             </select>
                             <div class="invalid-feedback">
                                 <?= isset($errCategory_id) ? $errCategory_id : null ?>
+                            </div>
+                        </div>
+
+                        <!-- description -->
+                        <div class="mb-3">
+                            <textarea name="description" class="form-control <?= isset($errDescription) ? "is-invalid":null ?>" placeholder="Product Description"><?= isset($description) ? $description : null ?></textarea>
+                            <div class="invalid-feedback">
+                                <?= isset($errDescription) ? $errDescription : null ?>
                             </div>
                         </div>
                         <!-- submit button -->

@@ -1,6 +1,17 @@
 <?php
 require_once './components/header.php';
 
+if (isset($_POST['deleteUser'])) {
+    $userId = $_SESSION['iUserInfo']->id;
+    $deleteQuery = "DELETE FROM `users` WHERE `id` = $userId";
+    if ($conn->query($deleteQuery)) {
+        session_unset();
+        header("Location: ./sign-in.php");
+    } else {
+        echo "<script>toastr.error('Failed to delete account');</script>";
+    }
+}
+
 if (!isset($_SESSION['iUserInfo'])) {
     header("Location: ./sign-in.php");
     exit();
@@ -133,6 +144,19 @@ if (isset($_POST['updateProfile'])) {
             </form>
         </div>
     </div>
+
+    <!-- delete user -->
+     <div class="row mb-3">
+        <div class="col-md-6 mx-auto bg-white border rounded shadow p-4">
+            <h2 class="text-center text-danger my-4">Delete Account</h2>
+            <p class="text-center">Are you sure you want to delete your account? This action cannot be undone.</p>
+            <div class="mb-3 text-center">
+                <form action="" method="POST">
+                    <button type="submit" class="btn btn-danger" name="deleteUser">Delete Account</button>
+                </form>
+            </div>
+        </div>
+     </div>
 </div>
 
 

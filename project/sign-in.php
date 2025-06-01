@@ -75,6 +75,8 @@
                     </div>
                     <button type="submit" class="btn btn-primary" name="signin123">Sign In</button>
                     <p class="mt-3">Don't have an account? <a href="./sign-up.php">Sign Up</a></p>
+                    <!-- forget password -->
+                    <p class="mt-3"><a href="./forget-password.php">Forget Password?</a></p>
                 </form>
             </div>
         </div>
