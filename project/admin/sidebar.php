@@ -14,19 +14,18 @@
                     <li class="active">
                         <a href="./"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
+                    <li class="active">
+                        <a href="./contact.php"> <i class="menu-icon fa fa-dashboard"></i>Contact </a>
+                    </li>
                     <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Slider</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-puzzle-piece"></i><a href="ui-buttons.html">All Slider</a></li>
-                            <li><i class="fa fa-id-badge"></i><a href="ui-badges.html">Add New Slider</a></li>
-                        </ul>
+                    <li class="active">
+                        <a href="./hero.php"> <i class="menu-icon fa fa-laptop"></i>Hero Section
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Contact info</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Info</a></li>
-                            <li><i class="fa fa-table"></i><a href="tables-data.html">Social Media</a></li>
+                            <li><i class="fa fa-table"></i><a href="social_media.php">Social Media</a></li>
                         </ul>
                     </li>
 

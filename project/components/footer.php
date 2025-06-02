@@ -10,24 +10,19 @@
 
     <!-- Right -->
     <div>
-      <a href="" class="me-4 text-reset text-decoration-none">
-        <i class="fa-brands fa-facebook-f"></i>
+      <?php  
+        $sql = $conn->query("SELECT * FROM social_media");
+        while ($row = $sql->fetch_assoc()) {
+          $name = $row['name']; 
+          $url = $row['url'];
+          $icon = $row['icon'];
+      ?>
+      <a href="<?php echo $url; ?>" class="me-4 text-reset text-decoration-none">
+        <?php echo htmlspecialchars_decode($icon); ?>
       </a>
-      <a href="" class="me-4 text-reset text-decoration-none">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a href="" class="me-4 text-reset text-decoration-none">
-        <i class="fab fa-google"></i>
-      </a>
-      <a href="" class="me-4 text-reset text-decoration-none">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="" class="me-4 text-reset text-decoration-none">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="" class="me-4 text-reset text-decoration-none">
-        <i class="fab fa-github"></i>
-      </a>
+      <?php
+        }
+      ?>
     </div>
     <!-- Right -->
   </section>

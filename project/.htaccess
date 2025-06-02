@@ -1,0 +1,17 @@
+Options +FollowSymLinks -MultiViews
+RewriteEngine On
+RewriteBase /cmbd282/project/
+
+# 1. Hide .php extension (e.g., /shop -> shop.php)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^/]+)/?$ $1.php [L]
+
+# 2. Redirect invalid URLs to 404.php with 404 status
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg)$ [NC]
+RewriteRule ^ /cmbd282/project/404.php [L,R=404]
+
+# 3. Force proper 404 status
+ErrorDocument 404 /cmbd282/project/404.php

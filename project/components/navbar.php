@@ -11,14 +11,14 @@
                     <a class="nav-link <?= $pageName == "index.php" ? "active":null ?>" aria-current="page" href="./">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= $pageName == "shop.php" ? "active":null ?>" href="./shop.php">Shop</a>
+                    <a class="nav-link <?= $pageName == "shop.php" ? "active":null ?>" href="./shop">Shop</a>
                 </li>
                 <?php if(!isset($_SESSION['iUserInfo'])){ ?>
                 <li class="nav-item">
-                    <a class="nav-link <?= $pageName == "sign-in.php" ? "active":null ?>" href="./sign-in.php">Sign In</a>
+                    <a class="nav-link <?= $pageName == "sign-in.php" ? "active":null ?>" href="./sign-in">Sign In</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= $pageName == "sign-up.php" ? "active":null ?>" href="./sign-up.php">Sign Up</a>
+                    <a class="nav-link <?= $pageName == "sign-up.php" ? "active":null ?>" href="./sign-up">Sign Up</a>
                 </li>
                 <?php }else{ ?>
                 <li class="nav-item dropdown">
@@ -30,10 +30,10 @@
                         ?>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="./my-profile.php">My Profile</a></li>
-                        <li><a class="dropdown-item" href="./change-password.php">Change Password</a></li>
-                        <li><a class="dropdown-item" href="./change-profile-picture.php">Change Profile Picture</a></li>
-                        <li><a class="dropdown-item" href="./my-orders.php">My Orders</a></li>
+                        <li><a class="dropdown-item" href="./my-profile">My Profile</a></li>
+                        <li><a class="dropdown-item" href="./change-password">Change Password</a></li>
+                        <li><a class="dropdown-item" href="./change-profile-picture">Change Profile Picture</a></li>
+                        <li><a class="dropdown-item" href="./my-orders">My Orders</a></li>
                         <?php if($_SESSION['iUserInfo']->role == "admin"){ ?>
                         <li><a class="dropdown-item" href="./admin">Admin Panel</a></li>
                         <?php } ?>
@@ -45,7 +45,7 @@
                 </li>
                 <?php } ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link <?= $pageName == "contact.php" ? "active":null ?>" href="./contact">Contact</a>
                 </li>
                 <!-- cart -->
                 <li class="nav-item me-3">
